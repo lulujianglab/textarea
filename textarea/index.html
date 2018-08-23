@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size:64px">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>textarea</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        
+        textarea {
+            outline: none; /* 去掉输入字符时的默认样式 */
+            FILTER: alpha(opacity=0); /*androd*/ 
+            appearance:none;
+            -webkit-appearance:none;
+            -moz-appearance:none;
+            background-color: white;
+            text-shadow: none;
+            -webkit-writing-mode: horizontal-tb !important;
+            -webkit-tap-highlight-color:rgba(0,0,0,0);
+            resize:none; /*禁止拉伸*/
+        }
+
+        .title {
+            font-size: 0.28rem;
+            color: #a3a3a3;
+        }
+
+        .note {
+            height: auto;
+            border: 1px solid #a6a6a6;
+            border-radius: 0.125rem;
+            margin: 0.31rem;
+            padding: 0.19rem;
+        }
+
+        .textarea{
+            display: block;
+            width: 100%;
+            color: #ff45a8;
+            border: none; /*去掉默认边框*/
+        }
+        
+        .text-count {
+            display: inline-block;
+            float: right;
+            /* text-align: right; */
+            font-size: 0.28rem;
+            color: #adadad;
+            padding-right: 0.25rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p class="title">我的笔记(document)</p>
+        <div class="note">
+            <textarea name="noteOne" class="textarea" id="noteOne" cols="40" rows="5"  maxlength="100"  placeholder="最多可输入100字">最多可输入100字</textarea>
+            <div class="text-count"><span id="text-count-one">0</span>/100</div>
+        </div>
+    </div>
+    <div>
+        <p class="title">我的笔记(jquery)</p>
+        <div class="note">
+            <textarea name="noteTwo" id="noteTwo" class="textarea" scols="40" rows="5" id="note2" maxlength="100" onkeyup="this.value=this.value.substring(0, 100)" placeholder="最多可输入100字">最多可输入100字</textarea>
+            <div class="text-count"><span id="text-count-two">0</span>/100</div>
+        </div>
+    </div>
+    <div id="app">
+        <p class="title">我的笔记(vue)</p>
+        <div class="note">
+            <textarea name="note" class="textarea" cols="40" rows="5" maxlength="100" v-model="desc" @input="descInput"></textarea>
+            <span class="text-count">{{remnant}}/100</span>
+        </div>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.5.14/vue.min.js"></script>
+    <script type="text/javascript">
+        document.documentElement.style.fontSize = window.innerWidth / 10 + 'px'
+
+        window.onload = function() {
+            //（document）
+            document.getElementById('noteOne').onkeyup = function() { 
+                // 启动计时器
+                console.time('testDocument');
+                var value = this.value.substring(0, 100)       
+                document.getElementById('text-count-one').innerHTML = value.length;
+                // 停止计时，输出时间
+                console.timeEnd('testDocument');
+            }
+            
+            //（jquery）
+            $('#noteTwo').keyup(function() {
+                // 启动计时器
+                console.time('testjQuery');
+                //  var val=$('#noteTwo').val();
+                //  var len=val.length;
+                var len=this.value.length
+                $('#text-count-two').text(len);
+                // 停止计时，输出时间
+                console.timeEnd('testjQuery');
+            })  
+        }
+        
+        // vue
+        var app = new Vue({
+            el: '#app',
+            data: { 
+                remnant:0,
+                desc:"最多可输入100字",
+            },
+            methods: {
+                descInput() {
+                    // 启动计时器
+                    console.time('testVue');
+                    var txtVal = this.desc.length
+                    this.remnant = txtVal
+                    // 停止计时，输出时间
+                    console.timeEnd('testVue');
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>
