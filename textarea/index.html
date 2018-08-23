@@ -26,6 +26,20 @@
             -webkit-writing-mode: horizontal-tb !important;
             -webkit-tap-highlight-color:rgba(0,0,0,0);
             resize:none; /*禁止拉伸*/
+            border: none; /*去掉默认边框*/
+        }
+        
+        textarea::-webkit-input-placeholder {
+            color: #ff45a8;
+        }
+        textarea:-ms-input-placeholder { /* IE10+ */
+            color: #ff45a8;
+        }
+        textarea:-moz-placeholder { /* Firefox4-18 */
+            color: #ff45a8;
+        }
+        textarea::-moz-placeholder { /* Firefox19+ */
+            color: #ff45a8;
         }
 
         .title {
@@ -44,8 +58,7 @@
         .textarea{
             display: block;
             width: 100%;
-            color: #ff45a8;
-            border: none; /*去掉默认边框*/
+            color: #ff45a8;        
         }
         
         .text-count {
@@ -63,21 +76,21 @@
     <div>
         <p class="title">我的笔记(document)</p>
         <div class="note">
-            <textarea name="noteOne" class="textarea" id="noteOne" cols="40" rows="5"  maxlength="100"  placeholder="最多可输入100字">最多可输入100字</textarea>
+            <textarea name="noteOne" class="textarea" id="noteOne" cols="40" rows="5"  maxlength="100"  placeholder="最多可输入100字"></textarea>
             <div class="text-count"><span id="text-count-one">0</span>/100</div>
         </div>
     </div>
     <div>
         <p class="title">我的笔记(jquery)</p>
         <div class="note">
-            <textarea name="noteTwo" id="noteTwo" class="textarea" scols="40" rows="5" id="note2" maxlength="100" onkeyup="this.value=this.value.substring(0, 100)" placeholder="最多可输入100字">最多可输入100字</textarea>
+            <textarea name="noteTwo" id="noteTwo" class="textarea" scols="40" rows="5" id="note2" maxlength="100" onkeyup="this.value=this.value.substring(0, 100)" placeholder="最多可输入100字"></textarea>
             <div class="text-count"><span id="text-count-two">0</span>/100</div>
         </div>
     </div>
     <div id="app">
         <p class="title">我的笔记(vue)</p>
         <div class="note">
-            <textarea name="note" class="textarea" cols="40" rows="5" maxlength="100" v-model="desc" @input="descInput"></textarea>
+            <textarea name="note" class="textarea" cols="40" rows="5" maxlength="100" v-model="desc" @input="descInput" placeholder="最多可输入100字"></textarea>
             <span class="text-count">{{remnant}}/100</span>
         </div>
     </div>
@@ -116,7 +129,7 @@
             el: '#app',
             data: { 
                 remnant:0,
-                desc:"最多可输入100字",
+                desc:"",
             },
             methods: {
                 descInput() {
