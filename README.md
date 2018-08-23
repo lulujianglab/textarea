@@ -45,9 +45,11 @@ textarea {
 }
 
 .textarea{
+   /*
    display: block;
    width: 100%;
    color: #ff45a8;
+   */
    border: none; /*去掉默认边框*/
 }
 ```
