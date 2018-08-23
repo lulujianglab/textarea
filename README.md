@@ -23,7 +23,7 @@ console.timeEnd('testTime');
 ```
 ## 本测试demo结果
 
-![image](https://user-images.githubusercontent.com/26807227/44505399-c77d7b80-a6d3-11e8-9776-cec85c68c515.png)
+![image](https://user-images.githubusercontent.com/26807227/44528329-dbe56680-a71b-11e8-823e-19465dcc2bee.png)
 
 对应的测试时间分别是原生js、jQuery、Vue,可以看出Vue的执行效率和渲染效率最高，同时它的数据双向绑定也能明显提高这类功能项目的开发效率
 
@@ -42,15 +42,21 @@ textarea {
   -webkit-writing-mode: horizontal-tb !important;
   -webkit-tap-highlight-color:rgba(0,0,0,0);
   resize:none; /*禁止拉伸*/
+  border: none; /*去掉默认边框*/
 }
 
-.textarea{
-   /*
-   display: block;
-   width: 100%;
-   color: #ff45a8;
-   */
-   border: none; /*去掉默认边框*/
+/*placeholder设置样式*/
+textarea::-webkit-input-placeholder {
+  color: #ff45a8;
+}
+textarea:-ms-input-placeholder { /* IE10+ */
+  color: #ff45a8;
+}
+textarea:-moz-placeholder { /* Firefox4-18 */
+  color: #ff45a8;
+}
+textarea::-moz-placeholder { /* Firefox19+ */
+  color: #ff45a8;
 }
 ```
 
