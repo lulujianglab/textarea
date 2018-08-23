@@ -23,6 +23,9 @@ console.timeEnd('testTime');
 ```
 ## 本测试demo结果
 
+![image](https://user-images.githubusercontent.com/26807227/44505399-c77d7b80-a6d3-11e8-9776-cec85c68c515.png)
+
+对应的测试时间分别是原生js、jQuery、Vue,可以看出Vue的执行效率和渲染效率最快，同时它的数据双向绑定也能明显提高这类功能项目的开发效率
 
 
 
