@@ -25,7 +25,33 @@ console.timeEnd('testTime');
 
 ![image](https://user-images.githubusercontent.com/26807227/44505399-c77d7b80-a6d3-11e8-9776-cec85c68c515.png)
 
-对应的测试时间分别是原生js、jQuery、Vue,可以看出Vue的执行效率和渲染效率最快，同时它的数据双向绑定也能明显提高这类功能项目的开发效率
+对应的测试时间分别是原生js、jQuery、Vue,可以看出Vue的执行效率和渲染效率最高，同时它的数据双向绑定也能明显提高这类功能项目的开发效率
+
+这里针对textarea做了一些默认样式的处理，包括取出默认边框，以及输入字符时的边框等，对input，button等也同样适用
+
+## 去除textarea、input等默认样式
+```
+textarea {
+  outline: none; /* 去掉输入字符时的默认样式 */
+  FILTER: alpha(opacity=0); /*androd*/ 
+  appearance:none;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  background-color: white;
+  text-shadow: none;
+  -webkit-writing-mode: horizontal-tb !important;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+  resize:none; /*禁止拉伸*/
+}
+
+.textarea{
+   display: block;
+   width: 100%;
+   color: #ff45a8;
+   border: none; /*去掉默认边框*/
+}
+```
+
 
 
 
